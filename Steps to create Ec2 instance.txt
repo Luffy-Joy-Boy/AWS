@@ -1,0 +1,36 @@
+EC2(Elastic Compute Cloud) Instance
+ An amazon ec2 instance is a virtual server which is used to run and deploy an applicaiton, website without a need of physical hardware. It can be customized based on the workload on these areas like cpu, memory, ram, os.
+How to create an ec2 instance:
+=> Go to EC2 instance tab, click Launch instance
+ 
+=>Give a name to your instance 
+ 
+=>Select the OS you want, you can also create your own AMI(amazon machine image)
+ 
+=> Now, you have to select the instance which has the structure of your server like, no. of cpu's
+ 
+=>In this step, you have to create or re-use the existing key pair to the instance it's like a security key to launch your instance
+ 
+To create a key pair
+ 
+
+You choose .pem for window os and .ppk for linux os
+
+=>Network setting, in this step you can configure your VPC, Subnet, Security group. You can change all the default setting by clicking  " edit " option right side corner.
+ 
+If you want to create a new security group can go here and create your own 
+ 
+=>Configure storage, In this you can customize the storage of  your server based on the budget
+ 
+And finally click Launch instance 
+ 
+
+
+
+
+
+
+
+
+
+
