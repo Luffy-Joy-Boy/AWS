@@ -1,0 +1,107 @@
+
+In this project, I have created a instance with certain volume and added extra volume made it visible on both linux and windows instances.
+
+===============================================================
+How to create a volume and Allocate to the instance
+
+While creating a new instance in configure storage tab click on "Add new volume"
+
+Add extra volume and launch instance
+
+Now Connect the instance to allocate the storage
+
+Here you can see the storage of 30 gb only because, the 4gb we added is unallocated
+
+To allocate the 4gb, Right click on 'Start button' -> Disk management.  Now you can see the storage is unallocated and offline 
+
+First click on offline and make it online
+
+After making it online, now it will show not initialized 
+
+To initialize it click on not initialized and make it initialized
+
+Now Right click on the unallocated 4gb -> new simple storage
+
+Click on next and finish the process, Now the storage will be allocated and it will show in disk.
+--------------------------------------------------------------------------------------------------------
+
+Create a new volume and attach it to the existing instance
+
+Click on the create volume button
+
+Select the type and size of the volume 
+
+Now give the details based on the requirement
+IOPS	  Input output operation that can be supported by the volume
+Throughput 	  Performance of the volume
+Availability zone	  It has to be same with the availability zone of the instance you are                going to connect
+Snapshot	 If you want you can create or else you can create it separately also 
+
+Click on create button
+
+We have created a new volume, now we're going to connect to the instance
+
+Click on the volume ID 
+
+Go to Actions => Attach volume 
+
+Select the instance. Select the device name and click on attach volume 
+You have attached the volume to the instance, go and allocate it as we did above 
+
+--------------------------------------------------------------------------------------------------------
+
+How to modify or add extra volume in the existing volume of an instance
+
+Open the volume and click on modify
+
+You can only increase the previous volume it cannot be decreased
+Change the size of the volume, 
+
+Click on modify
+
+The previous volume will be modified but it will be in unallocated state, you have change that into allocated state as we did previously in the document but we are going to extent the volume with the modified volume 
+I have changed the volume size from 11gb to 12 gb 
+
+You can see the extra 1gb in unallocated state in the disk management
+
+Right click on the 11gb -> click on extend volume -> Finish
+
+Now you can see that 11gb -> 12gb
+
+==================================================================
+
+How to connect volume to an linux instance 
+
+Create an linux instance and connect it with putty 
+
+Now take a look at the disk sections by using this command
+	"df -h" [disk free human readable]
+	
+After that give this command "lsblk" list block to see the unmounted volume in the instance.
+
+Now we're going to make a file system and directory to mount the extra volume
+
+These are the commands to make a file system and directory
+
+	Mkfs -t ext4 <path of  unmounted volume>
+	
+	Make files system 
+	-t = type of the file
+	Ext4 = format of the file
+	
+	Mkdir /<directory name>
+	
+After that we're going to mount the volume
+
+	Mount <file system path> <directory path>
+	
+	Mount /dev/xvdc  /usoop
+
+We can also modify the volume like we did in the windows system
+
+Change the volume size and enter this command
+
+	"resize2fs  /dev/xvdc  /usoop"
+	
+	
+
